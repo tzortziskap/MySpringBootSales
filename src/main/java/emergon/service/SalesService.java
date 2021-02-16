@@ -5,22 +5,23 @@
  */
 package emergon.service;
 
-import emergon.entity.Product;
+import emergon.entity.Sales;
 import java.util.List;
 
 /**
  *
  * @author tzortziskapellas
  */
-public interface ProductService {
+public interface SalesService {
     
-    public List<Product> getProducts();
+    public List<Sales> getSales();
 
-    public void addProduct(Product product);
+    public void addSales(Sales sales);
 
-    public void deleteProduct(int id);
+    public void deleteSales(int id);
 
-    public Product getProductById(int id) ;
+    public Sales getSalesById(int id) ;
 
-    public Product updateProduct(Product product);
+    public Sales updateSales(Sales sales);
+    
 }

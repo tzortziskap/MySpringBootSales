@@ -14,5 +14,9 @@
     <body>
         <h1>Hello World!</h1>
         <a href="${pageContext.request.contextPath}/product">Product</a>
+        <a href="${pageContext.request.contextPath}/customer">Customer</a>
+        <a href="${pageContext.request.contextPath}/sales">Sales</a>
+        <a href="${pageContext.request.contextPath}/salesman">Salesman</a>
+        <a href="${pageContext.request.contextPath}/family">Family</a>
     </body>
 </html>
