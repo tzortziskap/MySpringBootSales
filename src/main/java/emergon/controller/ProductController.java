@@ -26,7 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/product")
-public class PersonController {
+public class ProductController {
     
      @Autowired
     private ProductService service;
@@ -35,13 +35,13 @@ public class PersonController {
     public ModelAndView showProducts(ModelAndView modelAndView){
         List<Product> products = service.getProducts();
         modelAndView.addObject("listOfProducts", products);
-        modelAndView.setViewName("productList");
+        modelAndView.setViewName("product/productList");
         return modelAndView;
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String showForm(){
-        return "productForm";
+        return "product/productForm";
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -60,7 +60,7 @@ public class PersonController {
     public String showFormUpdate(@PathVariable("id") int id, Model model){
         Product product = service.getProductById(id);
         model.addAttribute("productToEdit", product);
-        return "productForm";
+        return "product/productForm";
     }
     
     @PostMapping("/update")

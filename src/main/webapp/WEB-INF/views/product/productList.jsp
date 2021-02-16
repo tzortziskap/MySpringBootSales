@@ -25,6 +25,7 @@
                     <tr>
                         <th>Code</th>
                         <th>Description</th>
+                        <th>Price</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
@@ -33,6 +34,7 @@
                     <tr>
                         <td>${product.pcode}</td>
                         <td>${product.pdescr}</td>
+                        <td>${product.pprice}</td>
                         <td>      
                             <a href="${pageContext.request.contextPath}/product/update/${product.pcode}">Update</a>
                         </td>
