@@ -5,7 +5,10 @@
  */
 package emergon.service;
 
+import emergon.entity.Product;
 import emergon.entity.Sales;
+import java.math.BigDecimal;
+
 import java.util.List;
 
 /**
@@ -23,5 +26,7 @@ public interface SalesService {
     public Sales getSalesById(int id) ;
 
     public Sales updateSales(Sales sales);
+
+    public BigDecimal calculateCost(Product pcode, Integer quant);
     
 }

@@ -16,9 +16,6 @@
         <h1>This is my List of sales</h1>
         <div>
             <h3>Sales</h3>
-            <p>
-                ${message}
-            </p>
             <a href="${pageContext.request.contextPath}/sales/create">Add sale</a>
             <table border="1">
                 <thead>
@@ -44,10 +41,10 @@
                         <td>${sale.quant}</td>
                         <td>${sale.cost}</td>
                         <td>      
-                            <a href="${pageContext.request.contextPath}/sales/update/${sale.pcode}">Update</a>
+                            <a href="${pageContext.request.contextPath}/sales/update/${sale.scode}">Update</a>
                         </td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/sales/delete?id=${sale.pcode}">Delete</a>
+                            <a href="${pageContext.request.contextPath}/sales/delete?id=${sale.scode}">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

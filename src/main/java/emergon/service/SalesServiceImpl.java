@@ -5,8 +5,11 @@
  */
 package emergon.service;
 
+import emergon.entity.Product;
 import emergon.entity.Sales;
 import emergon.repository.SalesRepo;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +45,11 @@ public class SalesServiceImpl implements SalesService {
     @Override
     public Sales updateSales(Sales sales) {
         return salesRepo.save(sales);
+    }
+
+    @Override
+    public BigDecimal calculateCost(Product pcode, Integer quant) {
+       return pcode.getPprice().multiply(new BigDecimal(quant));
     }
     
 }

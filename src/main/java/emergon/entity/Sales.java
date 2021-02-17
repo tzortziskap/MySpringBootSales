@@ -5,12 +5,18 @@
  */
 package emergon.entity;
 
+import emergon.converter.CustomerConverter;
+import emergon.converter.ProductConverter;
+import emergon.converter.SalesmanConverter;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +25,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -38,25 +47,32 @@ public class Sales implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Scode")
     private Integer scode;
     @Column(name = "Sdate")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date sdate;
-    @Column(name = "Quant")
+    @Column(name = "Quant", nullable = false)
+    @NotNull(message = "This cannot be null")
+    @Range(min=1)
     private Integer quant;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "Cost")
     private BigDecimal cost;
     @JoinColumn(name = "Ccode", referencedColumnName = "Ccode")
     @ManyToOne(optional = false)
+    @Convert(converter = CustomerConverter.class)
     private Customer ccode;
     @JoinColumn(name = "Smcode", referencedColumnName = "Scode")
     @ManyToOne(optional = false)
+    @Convert(converter = SalesmanConverter.class)
     private Salesman smcode;
      @JoinColumn(name = "Pcode", referencedColumnName = "Pcode")
     @ManyToOne(optional = false)
+     @Convert(converter = ProductConverter.class)
     private Product pcode;
 
     public Product getPcode() {
